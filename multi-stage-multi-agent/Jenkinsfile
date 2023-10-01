@@ -1,6 +1,12 @@
 pipeline {
   agent none
   stages {
+    stage('SCM CHECKOUT') {
+      agent any        
+      steps {
+        git branch: 'main', url: 'https://github.com/PradeepNandam/Jenkins-Zero-To-Hero'
+      }
+    }
     stage('Back-end') {
       agent {
         docker { image 'maven:3.8.1-adoptopenjdk-11' }
